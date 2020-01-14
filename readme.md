@@ -8,13 +8,6 @@
 | Примечания | Пока без примечаний. |
 
 
-##  Чтобы развернуть проект необходимо:
-```sh
-$ git clone git@github.com:loftschool/ls-advanced-portfolio.git
-$ cd ls-advanced-portfolio
-$ yarn
-```
-
 ## Скрипты package.json:
 
 | Скрипт | Назначение |
