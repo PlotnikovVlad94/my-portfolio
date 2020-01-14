@@ -3,8 +3,8 @@
 | ФИО | Плотников Владислав Антонович |
 | ------ | ------ |
 | Номер домашнего задания | ДЗ 1 |
-| Ссылка на репозиторий | https://github.com/PlotnikovVlad94/web-dev3 |
-| Ссылка на рабочий сайт | https://plotnikovvlad94.github.io/web-dev3/dist |
+| Ссылка на репозиторий | https://github.com/PlotnikovVlad94/my-portfolio |
+| Ссылка на рабочий сайт | https://plotnikovvlad94.github.io/my-portfolio/dist |
 | Примечания | Пока без примечаний. |
 
 
