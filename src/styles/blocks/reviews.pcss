@@ -1,0 +1,116 @@
+.reviews {
+  padding: 150px 0;
+}
+
+.reviews__container {
+  width: 80%;
+}
+
+.reviews__scroll {
+  display: flex;
+}
+
+.reviews__scroll-btns {
+  margin-left: 119px;
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviews__btn {
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
+  background-image:  svg-load('arrow-down.svg', fill=#fff, width=100%, height=100%);
+  background-size: 10px 6px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: solid 1px #f9f9f9;
+
+  &--prev  {
+  transform: rotate(180deg);
+}
+}
+
+.reviews__content {
+  margin-top: 100px;
+}
+
+.reviews__title {
+  color: #fff;
+}
+
+.reviews__list {
+  display: flex;
+}
+
+.reviews__item {
+  max-width: 420px;
+  padding-left: 95px;
+  position: relative;
+  margin-right: 84px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &:after {
+    content: "";
+    width: 75px;
+    height: 63px;
+    top: 0%;
+    left: 0%;
+    opacity: 0.05;
+    position: absolute;
+    background-image:  svg-load('quote.svg', fill=#fff, width=100%, height=100%);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+  
+}
+
+.reviews__avatar {
+  height: 75px;
+  width: 75px;
+  
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  &-dima {
+    background-image:  url(~images/content/reviews/dima.png);
+  }
+
+  &-vladimir {
+    background-image:  url(~images/content/reviews/vladimir.png);
+  }
+}
+
+.reviews__text {
+  color: #fff;
+  opacity: 0.5;
+  margin-bottom: 32px;
+}
+
+.reviews__author {
+  display: flex;
+  align-items: center;
+}
+
+.author-info {
+  margin-left: 31px;
+}
+
+.author-name {
+  color: #fff;
+}
+
+.author-position {
+  color: #fff;
+  opacity: 0.3;
+}

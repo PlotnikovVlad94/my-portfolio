@@ -1,0 +1,63 @@
+.user-skills {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-skills__item {
+  margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.skills-row__title {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 2;
+  color: #fff;
+}
+
+.skills-row__list {
+  display: flex;
+}
+
+.skill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill__shape {
+  width: 167px;
+  height: 167px;
+  fill: transparent;
+  stroke: #e9e9e9;
+  stroke-width: 3px;
+}
+
+.skill__title {
+  position: absolute;
+  max-width: 75px;
+  text-align: center;
+  color: #fff;
+}
+
+.skill__circle {
+    fill: transparent;
+    stroke: #423e3e;
+    stroke-width: 6px;
+}
+
+.skill__circle--position--under {
+  stroke-width: 3px;
+}
+
+.skill__circle--position--above {
+    stroke: #ef8800;
+    stroke-dasharray: 251;
+    stroke-dashoffset: 251;
+    animation: fill 100s linear infinite;
+    animation-play-state: paused;
+}
+
