@@ -5,4 +5,13 @@
   font-weight: bold;
   text-transform: uppercase;
   color: #fff;
+
+  @include phones {
+    padding: 28px 92px;
+  }
+
+  &:hover {
+    background-image: linear-gradient(to top, #dc9322, #d0731b);
+    transition: .3s;
+  }
 }

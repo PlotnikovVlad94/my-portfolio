@@ -1,0 +1,129 @@
+.welcome-parallax {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -100;
+
+  @include tablets {
+    display: none;
+  }
+}
+
+.parallax {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  min-height: 800px;
+  min-width: 1900px;
+  
+  @include desktop {
+    min-width: 1200px;
+  }
+  @include tablets {
+    min-width: 800px;
+  }
+
+  @include phones {
+    min-width: 500px;
+    min-height: 650px;
+  }
+}
+
+.parallax__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: 50% 0;
+  background-attachment: fixed;
+  background-size: cover;
+  min-width: 1800px;
+
+  &:first-child {
+    .parallax__image {
+      object-fit: cover;
+      top: 0;
+    }
+  }
+
+  &:nth-child(2) {
+    .parallax__image {
+      top: 394px;
+
+      @include desktop {
+        top: 260px;
+      }
+    }
+  }
+
+  &:nth-child(3) {
+    .parallax__image {
+      top: 350px;
+
+      @include desktop {
+        top: 340px;
+      }
+    }
+  }
+
+  &:nth-child(4) {
+    .parallax__image {
+      top: 840px;
+
+      @include desktop {
+        top: 680px;
+      }
+    }
+  }
+
+  &:last-child {
+    .parallax__image {
+      bottom: 0;
+    }
+  }
+}
+
+.parallax__image {
+  position: absolute;
+  width: 100%;
+}
+/* 
+.parallax_layer {
+        &:nth-child(1) {
+            .parallax_image {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &:nth-child(2) {
+            .parallax_image {
+                left: 0;
+                width: 100%;
+                top: 170px;
+            }
+        }
+        &:nth-child(3) {
+            z-index: 11;
+            @include phones {
+                z-index: 0;
+            }
+            .parallax_image {
+                left: 0;
+                width: 100%;
+                top: 230px;
+                
+            }
+        }
+        &:nth-child(4) {
+            z-index: 11;
+            @include phones {
+                z-index: 0;
+            }
+            .parallax_image {
+                left: 0;
+                width: 100%;
+                bottom: -700px;  */
+

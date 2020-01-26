@@ -1,3 +1,9 @@
+.sheet {
+  @include phones {
+    display: none;
+  }
+}
+
 .sheet-one {
   width: 380px;
   height: 380px;
@@ -5,6 +11,10 @@
   top: -15%;
   right: -5%;
   transform: rotate(-45deg);
+
+  @include tablets {
+    right: -21%;
+  }
 }
 
 .sheet-two {
@@ -23,6 +33,11 @@
   top: 30%;
   right: 14%;
   transform: rotate(15deg);
+
+  @include tablets {
+    width: 91px;
+    height: 97px;
+  }
 }
 
 .sheet-four {
@@ -31,4 +46,8 @@
   position: absolute;
   bottom: 5%;
   right: 20%;
+
+  @include tablets {
+    right: 0%;
+  }
 }

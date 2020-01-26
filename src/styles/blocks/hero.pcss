@@ -16,6 +16,21 @@
 
 .hero__menu {
   margin: 0 20px;
+  max-width: 687px;
+  width: 85%;
+
+  @include tablets {
+    display: none;
+  }
+}
+
+.hero__socials {
+  max-width: 165px;
+  width: 20%;
+
+  @include phones {
+    display: none;
+  }
 }
 
 .hero__header {
@@ -45,6 +60,17 @@
   opacity:  0.4;
   position: absolute;
   left: -50%;
+
+  @include tablets {
+    left: 0;
+    top: -60%;
+    width: 100%;
+    text-align: center;
+  }
+
+  @include phones {
+    top: -100%;
+  }
 }
 
 .user-info__username {
@@ -54,11 +80,19 @@
   line-height: 0.83;
   text-align: center;
   color: #fff;
-}
 
+  @include phones {
+    font-size: 42px;
+    line-height: 1.33;
+  }
+}
 
 .hero__btns {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+
+  @include tablets {
+    display: none;
+  }
 }

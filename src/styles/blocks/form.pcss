@@ -1,9 +1,13 @@
 .connect {
   padding: 50px 0px;
+
+  @include tablets {
+    padding-top: 0;
+  }
 }
 
 .form {
-  width: 850px;
+  max-width: 850px;
   display: flex;
   flex-direction: column;
 }
@@ -12,6 +16,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 41px;
+  z-index: 100;
+
+  @include phones {
+    flex-direction: column;
+    margin-bottom: 62px;
+  }
 
   &:nth-child(2) {
     margin-bottom: 0;
@@ -21,19 +31,36 @@
 .form__name,
 .form__email {
   width: 44%;
+
+  @include phones {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.form__name {
+  @include phones {
+    margin-bottom: 45px;
+  }
 }
 
 .form__text {
   width: 100%;
-}
 
-.form__container {
-  width: 80%;
+  @include phones {
+    text-align: center;
+  }
 }
 
 .form__title {
   color: #fff;
   margin-bottom: 97px;
+
+  @include phones {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 68px;
+  }
 }
 
 .input-icon {
@@ -90,4 +117,10 @@ textarea {
 
 .form__button {
   margin-top: 50px;
+  z-index: 100;
+
+  @include tablets {
+    display: flex;
+    justify-content: center;
+  }
 }

@@ -2,11 +2,17 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  max-width: 975px;
 }
 
 .slider__preview {
   display: flex;
   position: absolute;
+  max-width: 100%;
+
+  @include phones {
+    display: none;
+  }
 }
 
 .slider__preview,
@@ -20,13 +26,24 @@
 }
 
 .preview__item {
-  width: 178px;
+  max-width: 178px;
   height: 100px;
+  transition: .2s;
+  &.active,
+  &:hover {
+    outline: 3px solid #dc9322;
+    z-index: 100;
+  }
 }
 
 .slider__buttons {
   position: absolute;
   transform: translate(100%, 0%);
+
+  @include phones {
+    transform: translate(0%, 0%);
+    bottom: 0;
+  }
 }
 
 .slider-buttons__list {
@@ -42,6 +59,11 @@
   background-size: 10px 6px;
   background-position: center;
   background-repeat: no-repeat;
+
+  &:hover {
+    background-color: #d0731b;
+    transition: .3s;
+  }
 
   &--slide--prev  {
   transform: rotate(180deg);

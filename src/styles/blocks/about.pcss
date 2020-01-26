@@ -4,21 +4,51 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include desktop {
+    min-height: 650px;
+  }
 }
 
 .about__container {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include tablets {
+    justify-content: space-between;
+  }
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .about__left {
   width: 300px;
   margin-right: 150px;
+
+  @include tablets {
+    width: 36%;
+    margin-right: 0;
+  }
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .about__right {
   width: 530px;
+
+  @include tablets {
+    width: 57%;
+  }
+
+  @include phones {
+    width: 100%;
+    margin-top: 58px;
+  }
 }
 
 .about__prolog,
@@ -40,10 +70,18 @@
   line-height: 1.33;
   color: #fff;
   margin-bottom: 38px;
+
+  @include phones {
+    margin-bottom: 60px;
+  }
 }
 
 .about__text {
   margin-bottom: 105px;
+
+  @include phones {
+    margin-bottom: 56px;
+  }
 }
 
 .about__ps {

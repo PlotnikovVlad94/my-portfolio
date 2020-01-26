@@ -13,6 +13,19 @@ html(lang="en")
   body
     .wrapper
       .welcome-section
+        .welcome-parallax
+          .parallax
+            .parallax__layer(data-speed="0.15")
+              img(src=require("./images/content/parallax/p1.png")).parallax__image
+            .parallax__layer(data-speed="0.25")
+              img(src=require("./images/content/parallax/p2.png")).parallax__image
+            .parallax__layer(data-speed="0.35")
+              img(src=require("./images/content/parallax/p3.png")).parallax__image
+            .parallax__layer(data-speed="0.4")
+              img(src=require("./images/content/parallax/p4.png")).parallax__image
+            .parallax__layer
+              img(src=require("./images/content/parallax/p5.png")).parallax__image
+
         section.hero.section
           .container.hero__container
             header.header.hero__header
@@ -32,7 +45,9 @@ html(lang="en")
                     li.socials__item(class=`${index === 1 ? 'active' : ''}`)
                       a(href="").socials__link
                         +icon(`${item}`, 'socials__icon')
-
+              .hero__hamburger
+                button.hamburger-button
+              
             .hero__content
               .user-info
                 .user-info__desc 
@@ -108,7 +123,7 @@ html(lang="en")
                     ul.preview__list
                       - for(var i = 0; i < preview.length; i++)
                         li.preview__item
-                          a(href="").nav__link #{item}
+                          a(href="").preview__link #{item}
                             +image(`content/slider/${preview[i]}.png`, "preview__pic")
                 .slider__buttons
                   .slider-buttons__list
@@ -130,10 +145,10 @@ html(lang="en")
                   .iconed-link__text Посмотреть сайт
 
       .reviews-and-form
-        +image('content/sheet_one.png', 'sheet-one')
-        +image('content/sheet_two.png', 'sheet-two')
-        +image('content/sheet_three.png', 'sheet-three')
-        +image('content/sheet_four.png', 'sheet-four')
+        +image('content/sheet_one.png', 'sheet sheet-one')
+        +image('content/sheet_two.png', 'sheet sheet-two')
+        +image('content/sheet_three.png', 'sheet sheet-three')
+        +image('content/sheet_four.png', 'sheet sheet-four')
         section.reviews.section
           .container.reviews__container
             .reviews__scroll

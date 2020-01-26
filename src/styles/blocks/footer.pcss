@@ -1,17 +1,47 @@
 .footer {
   background-color: #222427;
   padding: 85px 0px;
+
+  @include tablets {
+    padding: 75px 0;
+    min-height: 550px;
+  }
+
+  @include phones {
+    padding: 68px 0;
+    min-height: 740px;
+  }
 }
 
 .footer__container {
-  width: 80%;
   display: flex;
   justify-content: space-between;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .footer__about {
   display: flex;
-  width: 25%;
+  width: 29%;
+  max-width: 365px;
+  
+  @include desktop {
+    flex-direction: column;
+    width: 20%;
+  }
+
+  @include tablets {
+    margin-right: 10px;
+    width: 30%;
+
+    @include phones {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 56px;
+    }
+  }
 }
 
 .footer__about--copyright {
@@ -20,11 +50,22 @@
   font-weight: 600;
   color: #fff;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .footer__about--text {
   max-width: 150px;
-  margin-left: 21%;
+  margin-left: auto;
+
+  @include desktop {
+    margin-left: 0;
+    margin-top: 31px;
+  }
+
+  
+  @include phones {
+    max-width: 100%;
+  }
 }
 
 .footer__about-desc {
@@ -33,6 +74,12 @@
   line-height: 1.88;
   color: #fff;
   margin-top: 34px;
+
+  @include phones {
+    display: flex;
+    justify-content: space-between;
+    max-width: 260px;
+  }
 }
 
 .footer__about-user {
@@ -43,26 +90,86 @@
 
 .footer__socials-block {
   max-width: 325px;
+  margin-right: 10px;
 }
 
 .footer__socials-txt {
   opacity: 0.3;
   color: #fff;
   margin-bottom: 27px;
+
+  @include phones {
+    max-width: 230px;
+    margin-bottom: 22px;
+  }
 }
 
 .footer__useful {
   width: 70%;
+
+  @include phones {
+    width: 100%;
+  }
+}
+
+.footer__menu {
+  @include tablets {
+    max-width: 550px;
+    flex-wrap: wrap;
+  }
+}
+
+.footer__menu .nav__list {
+  @include tablets {
+    flex-wrap: wrap;
+  }
+}
+
+.footer__menu .nav__item {
+  @include tablets {
+    margin-right: 9%;
+  }
+
+  @include phones {
+    margin-right: 28%;
+    line-height: 2.14;
+  }
 }
 
 .footer__info {
   margin-top: 70px;
   display: flex;
+
+  @include desktop {
+    justify-content: space-between;
+  }
+
+  @include tablets {
+    flex-direction: column;
+  }
+
+  @include phones {
+    margin-top: 58px;
+  }
 }
 
 .footer__confucius {
   max-width: 425px;
-  margin-left: 195px;
+  margin-left: auto;
+
+  @include desktop {
+    margin-left: 0;
+  }
+
+  @include tablets {
+    margin-top: 70px;
+    max-width: 510px;
+  }
+
+  @include phones {
+    margin-top: 58px;
+    max-width: 300px;
+  }
 }
 
 .footer__confucius--text {

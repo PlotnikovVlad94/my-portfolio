@@ -7,17 +7,48 @@
   max-width: 100%;
   position: relative;
 
-  &:after {
-    position: absolute;
-    content: url(~images/content/values-hands.png);
-    transform: translate(-22%, -75%);
+  @include tablets {
+    padding: 0;
+    overflow: hidden;
   }
 }
 
 .values__container {
   display: flex;
   flex-direction: column;
-  padding-left: 31%;
+  align-items: center;
+
+  @include tablets {
+    padding: 120px 0 350px 0;
+  }
+
+  @include phones {
+    padding: 120px 0 300px 0;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: url('~images/content/values-hands.png') left bottom / contain no-repeat;
+    display: block;
+    bottom: -6%;
+    width: 42%;
+    height: 100%;
+    left: -4%;
+
+    @include tablets {
+      bottom: 0;
+      left: 50%;
+      height: 63%;
+      transform: translate(-50%, 32%) rotate(-90deg);
+      background-position: center center;
+    }
+
+    @include phones {
+      width: 66%;
+      height: 40%;
+    }
+  }
 }
 
 .values__title {
@@ -25,11 +56,40 @@
   margin-bottom: 95px;
   color: #fff;
 
+  @include tablets {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 70px;
+    max-width: 500px;
+  }
+
+  @include phones {
+    text-align: left;
+  }
+
   &-text {
     margin-bottom: 59px;
+
+    @include tablets {
+      text-align: center;
+      max-width: 320px;
+      margin-bottom: 36px;
+    }
+
+    @include phones {
+    text-align: left;
   }
+  }
+
 }
 
 .values__skills {
-  padding-left: 17%;
+  align-self: flex-end;
+  z-index: 100;
+
+  @include tablets {
+    align-self: center;
+  }
 }
