@@ -15,13 +15,13 @@ html(lang="en")
       .welcome-section
         .welcome-parallax
           .parallax
-            .parallax__layer(data-speed="0.15")
+            .parallax__layer(data-speed="0.2")
               img(src=require("./images/content/parallax/p1.png")).parallax__image
-            .parallax__layer(data-speed="0.25")
+            .parallax__layer(data-speed="0.3")
               img(src=require("./images/content/parallax/p2.png")).parallax__image
-            .parallax__layer(data-speed="0.35")
+            .parallax__layer(data-speed="0.38")
               img(src=require("./images/content/parallax/p3.png")).parallax__image
-            .parallax__layer(data-speed="0.4")
+            .parallax__layer(data-speed="0.42")
               img(src=require("./images/content/parallax/p4.png")).parallax__image
             .parallax__layer
               img(src=require("./images/content/parallax/p5.png")).parallax__image
@@ -92,24 +92,7 @@ html(lang="en")
               p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
           
           .values__skills
-            ul.user-skills
-              - 
-                var skills = [
-                  ['Frontend', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
-                  ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
-                ]
-              each item in skills 
-                li.user-skills__item.skills-row 
-                  h3.skills-row__title #{item[0]}
-                  ul.skills-row__list
-                    each skill in item[1]
-                      li.skills-row__item
-                        .skill
-                          svg(viewBox="0 0 200 200" preserveAspectRatio="none").skill__shape
-                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--under
-                            circle(r="80" cx="100" cy="100").skill__circle.skill__circle--position--above
-                            linear-gradient()
-                          p.skill__title #{skill}
+            #skills-component
                     
       section.works.section
         .container.works__container
@@ -150,34 +133,8 @@ html(lang="en")
         +image('content/sheet_three.png', 'sheet sheet-three')
         +image('content/sheet_four.png', 'sheet sheet-four')
         section.reviews.section
-          .container.reviews__container
-            .reviews__scroll
-              h2.section-title.reviews__title Что обо мне говорят
-              .reviews__scroll-btns
-                button.reviews__btn.reviews__btn--prev
-                button.reviews__btn.reviews__btn--next
-            .reviews__content
-              ul.reviews__list
-                li.reviews__item
-                  .reviews__text
-                    p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-                  .reviews__author
-                    .avatar.reviews__avatar.reviews__avatar-dima
-                    .author-info
-                      .author-name 
-                        h3 Ковальчук Дмитрий
-                      .author-position 
-                        p Основатель Loftschool
-                li.reviews__item
-                  .reviews__text
-                    p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-                  .reviews__author
-                    .avatar.reviews__avatar.reviews__avatar-vladimir
-                    .author-info
-                      .author-name 
-                        h3 Владимир Сабанцев
-                      .author-position 
-                        p Преподаватель
+          #reviews-component
+
         section.connect.section
           .container.form__container
             h2.section-title.form__title Связаться со мной
@@ -245,6 +202,8 @@ html(lang="en")
                   p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 .footer__confucius--author 
                   p Martin Golding
+
+    include ./templates/entry.pug
                    
 
 

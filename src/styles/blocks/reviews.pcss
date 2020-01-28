@@ -4,10 +4,12 @@
 
 .reviews__scroll {
   display: flex;
+  margin-bottom: 100px;
 
   @include phones {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 38px;
   }
 }
 
@@ -37,10 +39,15 @@
   border-radius: 50%;
   border: solid 1px #f9f9f9;
 
-  &:hover {
+  &:hover,
+  &:focus  {
     background-image:  svg-load('arrow-down.svg', fill=#d0731b, width=100%, height=100%);
     border: solid 1px #d0731b;
     transition: .3s;
+  }
+
+  &:focus  {
+    border: solid 2px #d0731b;
   }
 
   &--prev  {
@@ -48,37 +55,27 @@
 }
 }
 
-.reviews__content {
-  margin-top: 100px;
-
-  @include phones {
-    margin-top: 38px;
-  }
-}
-
-.reviews__title {
-  color: #fff;
-
-  @include phones {
-    font-size: 28px;
-  }
-}
-
-.reviews__list {
-  display: flex;
+.reviews__switcher {
   max-width: 895px;
+}
+
+.carousel-cell {
+  width: 50%;
 
   @include phones {
-    width: 200%;
-    overflow: hidden;
+    width: 100%;
   }
 }
 
-.reviews__item {
+.reviews__headline {
+  display: flex;
+}
+
+.review {
+  width: 100%;
   max-width: 420px;
   padding-left: 95px;
   position: relative;
-  margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -92,6 +89,10 @@
     width: 100%;
     flex: 1;
     overflow: hidden;
+  }
+
+  &:last-shild {
+    margin-right: 0;
   }
 
   &:after {
@@ -112,29 +113,27 @@
       height: 30px;
     }
   }
+}
 
-  &:last-child {
-    margin-left: 10px;
-    margin-right: 0;
+.reviews__title {
+  color: #fff;
+
+  @include phones {
+    font-size: 28px;
   }
-  
 }
 
 .reviews__avatar {
-  height: 75px;
   width: 75px;
-  
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+  height: 75px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 
-  &-dima {
-    background-image:  url(~images/content/reviews/dima.png);
-  }
-
-  &-vladimir {
-    background-image:  url(~images/content/reviews/vladimir.png);
-  }
+.author__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .reviews__text {
@@ -146,11 +145,14 @@
 .reviews__author {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .author-info {
-  margin-left: 5px;
+  margin-left: 30px;
+
+  @include tablets {
+    margin-left: 20px;
+  }
 }
 
 .author-name {
