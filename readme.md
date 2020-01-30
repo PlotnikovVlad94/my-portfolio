@@ -2,9 +2,9 @@
 
 | ФИО | Плотников Владислав Антонович |
 | ------ | ------ |
-| Номер домашнего задания | ДЗ 2 |
+| Номер домашнего задания | ДЗ 1 |
 | Ссылка на репозиторий | https://github.com/PlotnikovVlad94/my-portfolio |
-| Ссылка на рабочий сайт | https://plotnikovvlad94.github.io/my-portfolio/ |
+| Ссылка на рабочий сайт | https://plotnikovvlad94.github.io/my-portfolio/dist |
 | Примечания | Пока без примечаний. |
 
 
