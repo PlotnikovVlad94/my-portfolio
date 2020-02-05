@@ -1,36 +1,36 @@
 <template lang="pug">
-
-  .maincontent
-    appHeader
-    about
-    works
-    reviews
-    
+  header.header
+    .main-header
+      .container
+        .header__info
+          .user
+            .user__pic
+              img(src="../../images/content/user.jpg").user__pic-avatar
+            .user__name 
+              span Плотников Владислав           
+          .header__title Панель администрирования
+        a.header__logout Выйти
+    .secondary-header
+      .container
+        nav.nav
+          ul.header__menu-list
+            li.header__menu-item
+              a.header__menu-link Обо мне
+            li.header__menu-item
+              a.header__menu-link Работы
+            li.header__menu-item
+              a.header__menu-link Отзывы
 </template>
 
 <script>
-
-
 export default {
-  components: {
-    appHeader: () => import("./components/header"),
-    about: () => import("./components/about"),
-    works: () => import("./components/works"),
-    reviews: () => import("./components/reviews")
-  }
-}
-
+  name: 'appHeader'
+};
 </script>
 
 <style lang="postcss">
-@import "normalize.css";
-@import "../styles/mixins.pcss";
-@import "../styles/layout/base.pcss";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 
-.container {
-  max-width: 1080px;
-}
+@import url("../../styles/mixins.pcss");
 
 .header {
   color: #fff;
@@ -44,7 +44,7 @@ export default {
 
 .main-header {
   padding: 18px 0;
-  background-image: linear-gradient(to top, #3e3e59, #454573);
+  background-image: linear-gradient(to top, #d0731b, #dc9322);
 }
 
 .secondary-header {
@@ -126,4 +126,5 @@ export default {
     margin-right: 0;
   }
 }
+
 </style>
