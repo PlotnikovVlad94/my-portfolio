@@ -2,21 +2,16 @@
 
   .maincontent
     appHeader
-    about
-    works
-    reviews
+    router-view
     
 </template>
 
 <script>
-
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
-    appHeader: () => import("./components/header"),
-    about: () => import("./components/about"),
-    works: () => import("./components/works"),
-    reviews: () => import("./components/reviews")
+    appHeader: () => import("./components/header")
   }
 }
 

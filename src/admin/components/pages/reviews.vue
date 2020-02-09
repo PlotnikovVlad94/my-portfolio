@@ -83,7 +83,7 @@ export default {
 
 <style lang="postcss">
 
-@import url("../../styles/mixins.pcss");
+@import url("../../../styles/mixins.pcss");
 
 .reviews__title {
   margin-bottom: 60px;
@@ -275,11 +275,11 @@ export default {
 }
 
 .vladimir {
-  background-image: url('../../images/content/reviews/vladimir.png');
+  background-image: url('../../../images/content/reviews/vladimir.png');
 }
 
 .dima {
-  background-image: url('../../images/content/reviews/dima.png');
+  background-image: url('../../../images/content/reviews/dima.png');
 }
 
 .windows--header__name {

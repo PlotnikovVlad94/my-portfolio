@@ -116,7 +116,7 @@ export default {
 
 <style lang="postcss">
 
-@import url("../../styles/mixins.pcss");
+@import url("../../../styles/mixins.pcss");
 
 .about {
   padding: 60px 0;

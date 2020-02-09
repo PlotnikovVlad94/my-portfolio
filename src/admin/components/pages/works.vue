@@ -84,7 +84,7 @@ export default {
 
 <style lang="postcss">
 
-@import url("../../styles/mixins.pcss");
+@import url("../../../styles/mixins.pcss");
 
 .works {
   color: #414c63;
@@ -170,11 +170,14 @@ export default {
   text-transform: uppercase;
   color: #fff;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-image: linear-gradient(to top, #dc9322, #d0731b);
     transition: .3s;
   }
-
+  &:focus {
+    box-shadow: 1px 1px 10px 3px #d0731b;
+  }
   {
     &--undecor {
       color: #d0731b;
@@ -186,8 +189,10 @@ export default {
         padding: 19px 25px;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-image: none;
+        box-shadow: none;
         color: #dc9322;
         transition: .3s;
       }
@@ -355,7 +360,7 @@ export default {
 .works__windows--pic {
   width: 100%;
   height: 190px;
-  background-image: url('../../images/content/slider/1.jpg');
+  background-image: url('../../../images/content/slider/1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

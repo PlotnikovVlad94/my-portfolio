@@ -14,17 +14,27 @@
       .container
         nav.nav
           ul.header__menu-list
-            li.header__menu-item
-              a.header__menu-link Обо мне
-            li.header__menu-item
-              a.header__menu-link Работы
-            li.header__menu-item
-              a.header__menu-link Отзывы
+            li.header__menu-item(v-for="tab in tabs")
+              router-link(
+                tag="a"
+                :data-text="tab.title" 
+                :to="tab.href"
+                exact-active-class="active"
+              ).header__menu-link 
+            
 </template>
 
 <script>
 export default {
-  name: 'appHeader'
+  data () {
+    return {
+      tabs: [
+        {title: "Обо мне", href: "/"},
+        {title: "Работы", href: "/works"},
+        {title: "Отзывы", href: "/reviews"}
+      ]
+    };
+  }
 };
 </script>
 
@@ -117,13 +127,40 @@ export default {
 .header__menu-list {
   display: flex;
   justify-content: space-between;
+  height: 80px;
 }
 
 .header__menu-item {
   margin-right: auto;
+  width: 33.3%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:last-child {
     margin-right: 0;
+  }
+}
+
+.header__menu-link {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
+  &:before {
+    content: attr(data-text);
+  }
+
+  &:hover,
+  &.active {
+    color: #d0731b;
+    font-weight: 600;
+    border-color: currentColor;
   }
 }
 
