@@ -4,5 +4,9 @@ export default {
    categories: []
  },
  mutations: {},
- actions: {}
+ actions: {
+   addCategory(store, title) {
+     console.log(title);
+   }
+ }
 };

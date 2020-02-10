@@ -54,7 +54,7 @@ export default {
 
 .main-header {
   padding: 18px 0;
-  background-image: linear-gradient(to top, #d0731b, #dc9322);
+  background-image: linear-gradient(to top, #3e3e59, #454573);
 }
 
 .secondary-header {

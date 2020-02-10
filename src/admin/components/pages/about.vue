@@ -4,114 +4,35 @@
       .about__title-block
         .about__title
           h2 Блок «Обо мне»
-        a.about__add-btn
-          .add-btn__block.add-btn__block--about
-            .add-btn__icon.add-btn__icon--about
-          .add-btn__text
-            span Добавить группу
+        button(type="submit").about__add-btn(
+          @click="addNewCategory"
+        ) Добавить группу
       .about__windows 
         ul.about__windows-list
-          li.about__windows-item
-            .windows__header
-              input.windows__header-name(placeholder="Название новой группы")
-              .windows__header-btns
-                button.skills-btn.pen
-            .windows__skills
-              ul.skills__list
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Git")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Terminal")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Webpack")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Gulp")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash                
-            .windows__add-skill.add-skill
-              .new-skill__name
-                input(type="text" class="skill-name__input skill-name__input--new" placeholder="Новый навык")
-              .skill__percent.new-skill__percent
-                input(type="text" class="skill-percent__input skill-percent__input--new" placeholder="100")
-              a.windows__add-btn
-                .add-btn__block.add-btn__block--window
-                  .add-btn__icon.add-btn__icon--window
-          li.about__windows-item
-            .windows__header
-              input.windows__header-name(placeholder="Название новой группы")
-              .windows__header-btns
-                button.skills-btn.pen
-            .windows__skills
-              ul.skills__list
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Git")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Terminal")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Webpack")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash
-                li.skills__item
-                  .skills__name
-                    input(type="text" class="skill-name__input" placeholder="Gulp")
-                  .skill__percent
-                    input(type="text" class="skill-percent__input" placeholder="100")
-                  .skills__btns
-                    button.skills-btn.pen
-                    button.skills-btn.trash                
-            .windows__add-skill.add-skill
-              .new-skill__name
-                input(type="text" class="skill-name__input skill-name__input--new" placeholder="Новый навык")
-              .skill__percent.new-skill__percent
-                input(type="text" class="skill-percent__input skill-percent__input--new" placeholder="100")
-              a.windows__add-btn
-                .add-btn__block.add-btn__block--window
-                  .add-btn__icon.add-btn__icon--window
+          skills-group.item           
+
 
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
-  name: 'about'
+  data: () => ({
+    title: ""
+  }),
+  components: {
+    skillsGroup: () => import("../skillsGroup.vue")
+  },
+  methods: {
+    ...mapActions("categories", ["addCategory"]),
+    addNewCategory() {
+      this.categories.unshift({
+        category: ''
+      })
+    }
+  }
 };
+
 </script>
 
 <style lang="postcss">
@@ -146,25 +67,26 @@ export default {
 }
 
 .about__add-btn {
+  color: #d0731b;
+  background-color: transparent;
+  font-weight: bold;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 170px;
-
-  @include phones {
-    margin-top: 35px;
+  padding: 0;
+  border: none;
+  &:before {
+    content: "+";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, #d0731b, #dc9322);
+    line-height: 20px;
+    color: #fff;
+    margin-right: 13px;
+    flex-shrink: 0;
+    flex-basis: 20px;
   }
-}
-
-.add-btn__text {
-  font-size: 16px;
-  font-weight: 600;
-  color: #d0731b;
-}
-
-.add-btn__block--about {
-  width: 21px;
-  height: 21px;
 }
 
 .add-btn__block {
