@@ -153,6 +153,7 @@ module.exports = (env, argv) => {
       new OptimizeCSSAssetsPlugin({})
     ];
   }
+  
 
   return config;
 };

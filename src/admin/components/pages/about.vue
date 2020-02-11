@@ -5,33 +5,59 @@
         .about__title
           h2 Блок «Обо мне»
         button(type="submit").about__add-btn(
-          @click="addNewCategory"
+          @click="addNewSkillGroup"
         ) Добавить группу
       .about__windows 
         ul.about__windows-list
-          skills-group.item           
-
-
+          li.about__windows-item(
+            v-for="category in categories"
+            :key="category.id"
+          )
+            .windows__header
+              input.windows__header-name(placeholder="Название новой группы" type="text" v-model="title")
+              .windows__header-btns
+                button(type="submit").skills-btn.pen
+            skills-group(
+              :category="category"
+            )       
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
+  components: {
+    skillsGroup: () => import("../skillsGroup")
+  },
   data: () => ({
     title: ""
   }),
-  components: {
-    skillsGroup: () => import("../skillsGroup.vue")
+  computed : {
+    ...mapState("categories", {
+      categories: state => state.categories
+    })
+  },
+  created() {
+    this.fetchCategories();
   },
   methods: {
-    ...mapActions("categories", ["addCategory"]),
-    addNewCategory() {
+    ...mapActions("categories", ["addCategory", "fetchCategories"]),
+      addNewSkillGroup(){
       this.categories.unshift({
-        category: ''
+        category: '',
+        skills: []
       })
+    },
+    async addNewCategory() {
+      try {
+        await this.addCategory(this.title);
+      } catch (error) {
+        alert(error.message);
+      }
     }
   }
 };
+
+// 
 
 </script>
 
