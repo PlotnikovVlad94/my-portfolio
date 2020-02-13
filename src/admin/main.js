@@ -5,12 +5,12 @@ import SimpleVueValidation from 'simple-vue-validator';
 import router from './router';
 import store from './store';
 import $axios from './requests';
-
-
-
-
+Vue.use(SimpleVueValidation);
 
 store.$axios = $axios;
+
+export const eventBus = new Vue();
+export const eventBusEditReviewMode = new Vue();
 
 new Vue({
   el: "#app-root",
