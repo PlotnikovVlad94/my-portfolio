@@ -116,39 +116,39 @@ html(lang="en")
         +image('content/sheet_four.png', 'sheet sheet-four')
         section.reviews.section#reviews
           #reviews-component
-
-        section.connect.section#connect
+        
+        section.connect.section
           .container.form__container
+            
             h2.section-title.form__title Связаться со мной
-            form.form
+            form#form.form.js-form(action='https://webdev-api.loftschool.com/sendmail' method='POST')
               .form__stroke
                 .form__name
-                  label.label
-                    .text-in Введите ваше имя
-                    .label-in
-                      .input-icon
-                        +icon('user', 'form-icon')
-                      .input
-                        input(name="name" type="name" class="name_input" placeholder="Плотников Владислав" required)
+                  label.label(for='name')
+                    span.text-in.js-label-text Введите имя
+                    +icon('user', 'form-icon')
+                    input(type='text' name='name')#name.name_input.js-input
+                    .form__error
                 .form__email
-                  label.label
-                    .text-in Введите ваш email
-                    .label-in
-                      .input-icon
-                        +icon('envelope', 'form-icon')
-                      .input
-                        input(name="email" type="email" class="email_input" placeholder="plotnikov.va94@gmail.com" required)
+                  label.label(for='email')
+                    span.text-in.js-label-text Введите email
+                    +icon('envelope', 'form-icon')
+                    input(type='email' name='email')#email.email_input.js-input
+                    .form__error
               .form__stroke 
                 .form__text
-                  label.label
-                    .text-in Сообщение к письму
-                    .label-in
-                      .input-icon.message-icon
-                        +icon('message', 'form-icon')
-                      .input
-                        textarea(name="text" type="text" class="text_input" placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса" required).textarea
+                  label.label(for='message')
+                    span.text-in.js-label-text Сообщение к письму
+                    +icon('message', 'form-icon form-icon__message')
+                    textarea(name='message' rows='1')#message.text_input.js-input
+                    .form__error
               .form__button
-                button.btn Отправить
+                button.btn.js-submit(type='submit') Отправить 
+        
+        .modal
+          .modal__window
+            .modal__text Сообщение отправлено
+            button(type='button').btn.btn-close Закрыть
 
       footer.footer 
         .container.footer__container

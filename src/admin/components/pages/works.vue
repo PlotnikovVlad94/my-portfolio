@@ -1,85 +1,86 @@
 <template lang="pug">
-
   section.section.works
     .container.works__container
       .works__title
         h2 Блок «Работы»
-      .works__edit-block
-        .edit-block__title
-          span Добавление работы
-        .edit-block__content.edit-block__content--works
-          .edit-block__upload
-            .edit-block__upload--text
-              p Перетащите или загрузите для загрузки изображения
-            .edit-block__upload--btn
-              button.btn Загрузить
-          .edit-block__info
-            .edit__row
-              .edit__name
-                span Название
-              input(type="text" class="edit__input")
-            .edit__row
-              .edit__name
-                span Ссылка
-              input(type="text" class="edit__input")
-            .edit__row
-              .edit__name
-                span Описание
-              textarea(type="text" class="edit__textarea")
-            .edit__row
-              .edit__name
-                span Добавление тэга
-              input(type="text" class="edit__input")
-            .edit__btns 
-              button.btn.btn--undecor Отмена
-              button.btn Загрузить
+      workAdd(
+        v-if="addWorkMode === true"
+        @cancelLoad="addWorkMode = false"
+      )
+      workEdit(
+        v-if="editWorkMode === true"
+        @cancelEditLoad="editWorkMode = false"
+      )
+
       .works__windows
         ul.works__windows--list
           li.works__windows--item.works__windows--btn_item
-            button.add--window
+            button(
+              @click="confirmLoad"
+            ).add--window
               .add--icon
               .add--text Добавить работу
-          li.works__windows--item
-            .works__windows--pic
-            .works__windows--control
-              .control__title
-                span Сайт школы образования
-              .control__desc
-                span Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .control__link
-                a(href="http://loftschool.ru" target="_blank") http://loftschool.ru
-              .control__btns 
-                button.control__btn
-                  .contol__btn-text Править
-                  .control__btn-icon.pen
-                button.control__btn
-                  .contol__btn-text Удалить
-                  .control__btn-icon.close
-          li.works__windows--item
-            .works__windows--pic
-            .works__windows--control
-              .control__title
-                span Сайт школы образования
-              .control__desc
-                span Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-              .control__link
-                a(href="http://loftschool.ru" target="_blank") http://loftschool.ru
-              .control__btns 
-                button.control__btn
-                  .contol__btn-text Править
-                  .control__btn-icon.pen
-                button.control__btn
-                  .contol__btn-text Удалить
-                  .control__btn-icon.close
+          li.works__windows--item(
+            v-for="work in works"
+          )
+            workItem(
+              :work="work"
+              @editWork="editWorkMode = true"
+            )
     
 </template>
 
 <script>
 
-export default {
-  name: 'works'
-};
+import { mapActions, mapState } from 'vuex';
+import $axios from 'axios';
 
+export default {
+  components: {
+    workAdd: () => import('../worksAdd'),
+    workEdit: () => import('../worksEdit'),
+    workItem: () => import('../worksItem')
+  },
+  data() {
+    return {
+      addWorkMode: false,
+      editWorkMode: false,
+      workEdit: {}
+    }
+  },
+  methods: {
+    ...mapActions('works', ['getWorks']),
+    ...mapActions('tooltipe', ['showTooltipe']),
+    editCurrentWork(editWorkData) {
+      try {
+        this.editWorkMode = true;
+      } catch(error) {
+        this.showTooltipe({
+          active: true,
+          message: 'Проверьте введенные данные'
+        })
+      }
+    },
+    confirmLoad() {
+      this.addWorkMode = true;
+    }
+  },
+  computed: {
+    ...mapState('works', {
+    works: state => state.works
+    }),
+  },
+  async created() {
+    try {
+      await this.getWorks();
+    } catch (error) {
+      this.showTooltipe({
+        active: true,
+        message: 'Проверьте введенные данные'
+      })
+    }
+  }
+}
 </script>
 
 <style lang="postcss">
@@ -91,20 +92,17 @@ export default {
   opacity: 1;
 }
 
-.works__container {
-  padding: 60px 0;
-}
-
 .works__title {
   font-size: 17px;
   font-weight: bold;
-  margin-bottom: 60px;
 }
 
 .works__edit-block {
   min-height: 775px;
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
-  padding: 30px;
+  padding: 0 30px 30px 30px;
+  background-color: #fff;
+  margin-top: 60px;
 }
 
 .edit-block__content {
@@ -134,7 +132,7 @@ export default {
     width: 100%;
     bottom: 0;
     opacity: 0.15;
-    border: 1px solid #1f232d;
+    border-bottom: 1px solid #1f232d;
   }
 }
 
@@ -145,6 +143,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  position: relative;
 
   @Include tablets {
     height: 260px;
@@ -220,6 +220,18 @@ export default {
   }
 }
 
+.load-file {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
 .edit__row {
   margin-top: 30px;
 }
@@ -257,36 +269,41 @@ export default {
 
 .works__windows--list {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
 
-  @include tablets {
-    flex-wrap: wrap;
-  }
 }
 
 .works__windows--item {
-  display: flex;
-  flex-direction: column;
   max-width: 340px;
   width: 30%;
-  height: 556px;
+  min-height: 556px;
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
   margin-bottom: 30px;
-  margin-left: 2%;
-
+  margin-left: 5%;
+  background-color: #fff;
   &:first-child {
     padding: 0;
     margin-left: 0;
   }
 
+  &:nth-child(4n) {
+  margin-left: 0;
+
+  @include tablets {
+    margin-left: 5%;
+  }
+
+  @include phones {
+    margin-left: 0;
+  }
+}
+
   @include tablets {
     width: 50%;
     max-width: 390px;
-
     &:first-child {
       padding: 0;
     }
-
     &:nth-child(odd) {
     margin-left: 0;
   }
@@ -298,9 +315,15 @@ export default {
   }
 }
 
+.works__windows--content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .works__windows--btn_item {
   @include phones {
-    height: 120px;
+    min-height: 120px;
   }
 }
 
@@ -357,13 +380,36 @@ export default {
   }
 }
 
+.works__windows--pic-content {
+  position: relative;
+  width: 100%;
+}
+
 .works__windows--pic {
   width: 100%;
-  height: 190px;
-  background-image: url('../../../images/content/slider/1.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.works-windows__tags-list {
+  display: flex;
+  position: absolute;
+  right: 8%;
+  bottom: 8%;
+}
+
+.works-windows__tags-item {
+  margin-left: 3%;
+  
+  background-color: #f4f4f4;
+  border-radius: 30px;
+}
+
+.works-section__tags-text {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 10px;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(40, 51, 64, 0.7);
 }
 
 .works__windows--control {
@@ -396,7 +442,6 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  /* margin-top: 45px; */
 }
 
 .control__btn {
@@ -414,5 +459,7 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 17px;
+  width: 17px;
 }
 </style>

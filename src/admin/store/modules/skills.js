@@ -52,7 +52,7 @@ export default {
     },
     async getSkills({commit}) {
       try {
-        const {data: skills} = await this.$axios.get('/skills/157');
+        const {data: skills} = await this.$axios.get('/skills/285');
         commit('SET_SKILLS', skills);
       } catch(error) {
           throw new Error(

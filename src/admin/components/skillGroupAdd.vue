@@ -12,11 +12,11 @@
         button(
           type="button" 
           @click="addNewCategory"
-        ).skills-btn.pen
+        ).skills-btn.okay
         button(
           type="button" 
           @click="editCardModeOFalse"
-        ).skills-btn.pen
+        ).skills-btn.close
 </template>
 
 <script>
@@ -56,7 +56,7 @@ export default {
       } catch(error) {
           this.showTooltipe({
           active: true,
-          message: error.message
+          message: 'Проверьте введенные данные'
         })
       } finally {
         this.groupFormIsBlocked = false;

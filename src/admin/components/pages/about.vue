@@ -6,9 +6,7 @@
           h2 Блок «Обо мне»
         button(type="submit").about__add-btn(
           @click="editCardModeOn = true"
-        ) Добавить группу
-
-            
+        ) Добавить группу    
       .about__windows 
         ul.about__windows-list
           li.about__windows-item(
@@ -18,40 +16,13 @@
               :categories="categories"
               :editCardModeOn="editCardModeOn"
             )
-          //-   .windows__header
-          //-     input.windows__header-name(placeholder="Название новой группы")
-          //-     .windows__header-btns
-          //-       button.skills-btn.pen
-          //-   .windows__skills
-          //-     ul.skills__list
-          //-       li.skills__item
-          //-         .skills__name
-          //-           input(type="text" class="skill-name__input" placeholder="Git")
-          //-         .skill__percent
-          //-           input(type="text" class="skill-percent__input" placeholder="100")
-          //-         .skills__btns
-          //-           button.skills-btn.pen
-          //-           button.skills-btn.trash
-               
-          //-   .windows__add-skill.add-skill
-          //-     .new-skill__name
-          //-       input(type="text" class="skill-name__input skill-name__input--new" placeholder="Новый навык")
-          //-     .skill__percent.new-skill__percent
-          //-       input(type="text" class="skill-percent__input skill-percent__input--new" placeholder="100")
-          //-     a.windows__add-btn
-          //-       .add-btn__block.add-btn__block--window
-          //-         .add-btn__icon.add-btn__icon--window
-
-          
-          //- li.about__windows-item(
-          //-   v-for="category in categories"
-          //- )
-          //-   skillGroup(
-          //-     :category="category"
-          //-     :skills = "filterSkillsByCategoryId(category.id)"
-          //-     )
-          
-
+          li.about__windows-item(
+            v-for="category in categories"
+          )
+            skillGroup(
+              :category="category"
+              :skills = "filterSkillsByCategoryId(category.id)"
+              )
 </template>
 
 <script>
@@ -61,7 +32,7 @@ import { eventBus } from '../../main';
 export default {
   components : {
     skillGroupAdd: () => import('../skillGroupAdd'),
-    // skillGroup: () => import('./skill-group')
+    skillGroup: () => import('../skillgroup')
   },
   data () {
     return {
@@ -90,7 +61,7 @@ export default {
     } catch(error) {
       this.showTooltipe({
         active: true,
-        message: error.message
+        message: 'Проверьте введенные данные'
       })
     }
     try {
@@ -98,7 +69,7 @@ export default {
     } catch(error) {
       this.showTooltipe({
           active: true,
-          message: error.message
+          message: 'Проверьте введенные данные'
       })
     }
   },
@@ -113,7 +84,6 @@ export default {
 <style lang="postcss">
 @import url("../../../styles/mixins.pcss");
 .about {
-  padding: 60px 0;
   min-height: 525px;
 }
 .about__container {
@@ -133,6 +103,10 @@ export default {
   font-weight: bold;
   text-align: left;
   color: #414c63;
+
+  @include phones {
+    margin-bottom: 30px;
+  }
 }
 .about__add-btn {
   color: #d0731b;
@@ -202,9 +176,35 @@ export default {
     opacity: 0.51;
   }
 }
+.windows__header-name {
+  max-width: 273px;
+  width: 63%;
+}
+.windows__header-btns {
+  display: flex;
+  justify-content: space-between;
+  max-width: 50px;
+  width: 13%;
+}
 .windows__add-btn {
-  width: 40px;
-  height: 40px;
+  color: #d0731b;
+  background-color: transparent;
+  font-weight: bold;
+  padding: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:before {
+    content: "+";
+    font-size: 30px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, #d0731b, #dc9322);
+    color: #fff;
+  }
 }
 .about__windows {
   margin-top: 60px;
@@ -215,6 +215,7 @@ export default {
   flex-wrap: wrap;
 }
 .about__windows-item {
+  background-color: #fff;
   width: 48.5%;
   max-width: 525px;
   min-height: 387px;
@@ -223,6 +224,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 10px;
   @include phones {
     width: 100%;
     padding: 20px;
@@ -267,21 +269,7 @@ export default {
     left: 65%;
   }
 }
-input {
-  border: none;
-  background: none;
-  outline: none;
-  font-weight: bold;
-  padding: 14px 0px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #414c63;
-  width: 100%;
-  &:focus {
-    border-bottom: 1px solid #000;
-    opacity: 0.51;
-  }
-}
+
 .skill-name__input {
   padding: 16px 0px;
   &--new {
@@ -309,24 +297,17 @@ input {
 }
 .skills-btn {
   background-color: transparent;
-  background-position: center;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.51;
 }
-.pen {
-  background-image: svg-load("pencil.svg", fill=#414c63, width=100%, height=100%);
-  width: 14px;
-  height: 14px;
-}
-.trash {
-  background-image: svg-load("trash.svg", fill=#414c63, width=100%, height=100%);
-  width: 12px;
-  height: 15px;
-}
-.close {
-  background-image: svg-load("cross.svg", fill=#c92e2e, width=100%, height=100%);
-  width: 14px;
-  height: 14px;
+
+
+.about__windows-item__form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>

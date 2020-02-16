@@ -9,7 +9,7 @@
             .user__name 
               span Плотников Владислав           
           .header__title Панель администрирования
-        a.header__logout Выйти
+        a(href="#" @click.prevent="deleteThisToken").header__logout Выйти
     .secondary-header
       .container
         nav.nav
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import Vue from "vue";
+import { mapActions } from 'vuex';
 export default {
   data () {
     return {
@@ -34,6 +36,17 @@ export default {
         {title: "Отзывы", href: "/reviews"}
       ]
     };
+  },
+  methods: {
+     ...mapActions('user', ['logout']),
+     async deleteThisToken () {
+        try {
+          await this.logout();
+          this.$router.replace('/login');
+        } catch (error) {
+            console.log(error);
+        }
+    }
   }
 };
 </script>

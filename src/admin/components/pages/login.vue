@@ -19,11 +19,13 @@
         .login__btn
           button(
             type="submit"
-          ).btn Отправить
+          ).btn-aut Отправить
 </template>
 
 <script>
 import $axios from "../../requests";
+import { mapActions } from 'vuex';
+
 export default {
   components: {
     appInput: () => import("../input")
@@ -31,12 +33,13 @@ export default {
   data() {
     return {
       user: {
-        name: "",
-        password: ""
+        name: "plotnikovv-0220",
+        password: "qwerty"
       }
     };
   },
   methods: {
+    ...mapActions('tooltipe', ['showTooltipe']),
     async login() {
       try {
         const response = await $axios.post("/login",  this.user); 
@@ -44,8 +47,11 @@ export default {
         localStorage.setItem("token", token);
         $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
         this.$router.replace("/");  
-      } catch (error) {
-        console.warn("Неверный логин или пароль");
+      } catch(error) {
+          this.showTooltipe({
+            active: true,
+            message: 'Неверный логин или пароль'
+          })
       }
     }
   }
@@ -96,7 +102,7 @@ export default {
   padding: 0 8%;
   justify-content: center;
 }
-.btn {
+.btn-aut {
   padding: 35px 120px;
   background-image: linear-gradient(to top, #d0731b, #dc9322);
   font-size: 18px;
@@ -107,7 +113,7 @@ export default {
   &:hover,
   &:focus {
     background-image: linear-gradient(to top, #dc9322, #d0731b);
-    transition: .3s;
+    transition: .2s;
   }
 
   &:focus {

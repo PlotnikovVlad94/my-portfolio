@@ -52,7 +52,7 @@ export default {
     },
     async getCategories({commit}) {
       try {
-        const {data: categories} = await this.$axios.get('/categories/157');
+        const {data: categories} = await this.$axios.get('/categories/285');
         commit('SET_CATEGORIES', categories);
       } catch(error) {
           throw new Error(
