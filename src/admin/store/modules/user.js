@@ -4,15 +4,11 @@ export default {
     user: {}
   },
   mutations: {
-    SET_USER: (state, user) => {
-      state.user = user;
-    },
-    DELETE_USER: (state) => {
-      state.user = state.user;
-  }
+    SET_USER: (state, user) => (state.user = user),
+    CLEAR_USER: state => (state.user = {})
   },
   getters: {
-    userIsLogged: state => {
+    userIsLoggedIn: state => {
       const userObj = state.user;
       const userObjectIsEmpty =
         Object.keys(userObj).length === 0 && userObj.constructor === Object;
@@ -21,18 +17,9 @@ export default {
     }
   },
   actions: {
-    async logout({commit}) {
-      try {
-          const response = await this.$axios.post('/logout');
-          commit ('DELETE_USER');
-          localStorage.removeItem('token');
-          this.$axios.defaults.headers['Authorization'] = '';
-          return response
-      } catch (error) {
-          throw new Error (
-              error.response.data.error || error.response.data.message
-          )
-      }
+    logout({ commit }) {
+      commit("CLEAR_USER");
+      localStorage.clear();
+    }
   }
-  }
-}
+};
