@@ -1,8 +1,13 @@
 import Vue from "vue";
+import axios from 'axios';
 
 const preview = {
   template: "#slider-preview",
-  props: ["works", "currentWork"]
+  props: {
+    works: Array,
+    currentWork: Object
+  },
+
 };
 
 const btn = {
@@ -14,12 +19,23 @@ const display = {
   components: {
     preview, btn
   },
-  props: ["works", "currentWork", "currentIndex"]
+  props: {
+    works: Array,
+    currentWork: Object,
+    currentIndex: Number
+  }
 };
 
 const tags = {
   template: "#slider-tags",
-  props: ["tags"]
+  props: {
+    currentWork: Object
+  },
+  computed : {
+    tagsArray () {
+      return this.currentWork.techs.split(',');
+    }
+  }
 };
 
 const info = {
@@ -27,11 +43,8 @@ const info = {
   components: {
     tags
   },
-  props: ["currentWork"],
-  computed: {
-    tagsArray() {
-      return this.currentWork.skills.split(', ');
-    }
+  props: {
+    currentWork: Object
   }
 };
 
@@ -44,6 +57,8 @@ new Vue({
   data() {
     return {
       works: [],
+      baseURL: "https://webdev-api.loftschool.com",
+      userID: 285,
       currentIndex: 0
     }
   },
@@ -52,10 +67,21 @@ new Vue({
       return this.works[this.currentIndex]
     }
   },
+  watch: {
+    currentIndex(value) {
+      if(value === this.works.length) {
+        this.currentIndex = 0;
+      }
+
+      if(value === -1) {
+        this.currentIndex = this.works.length - 1;
+      }
+    }
+  },
   methods: {
     makeArrWithRequiredImages(data) {
       return data.map(item => {
-        const requiredPic = require(`../images/content/slider/${item.photo}`);
+        const requiredPic = `${this.baseURL}/${item.photo}`;
         item.photo = requiredPic;
 
         return item;
@@ -70,11 +96,18 @@ new Vue({
           this.currentIndex > 0 ? this.currentIndex-- : this.currentIndex  
           break;
       }
+    },
+    clickAtWork(workIndex) {
+      this.currentIndex = workIndex;
+    },
+    async getWorks() {
+      await axios.get(`${this.baseURL}/works/${this.userID}`)
+        .then(response => this.works = this.makeArrWithRequiredImages(response.data))
     }
+    
   },
   created() {
-    const data = require("../data/works.json");
-    this.works = this.makeArrWithRequiredImages(data);
+    this.getWorks();
   }
 });
 
