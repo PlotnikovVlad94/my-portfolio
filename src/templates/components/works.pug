@@ -1,5 +1,5 @@
 script(type="text/x-template")#works-container
-  .works__wrapper
+  .works__wrapper(v-if="works.length > 0")
     display(
       :works="works",
       :currentWork="currentWork",
