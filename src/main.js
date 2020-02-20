@@ -9,7 +9,7 @@ import "./scripts/skills.js";
 import "./scripts/reviews.js";
 import "./scripts/works.js";
 import "./scripts/scroll.js";
-// import "./scripts/formdata";
+import "./scripts/fullscreen-menu";
 import sendForm from './scripts/sendForm';
 
 sendForm({

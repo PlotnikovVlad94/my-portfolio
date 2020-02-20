@@ -42,7 +42,7 @@ html(lang="en")
                     li.nav__item
                       a(href="#reviews").nav__link Отзывы
                     li.nav__item
-                      a(href="#connect").nav__link Связаться
+                      a(href="#form").nav__link Связаться
               .hero__socials
                 ul.socials
                   li.socials__item
@@ -175,7 +175,7 @@ html(lang="en")
                   li.nav__item
                     a(href="#reviews").nav__link Отзывы
                   li.nav__item
-                    a(href="#connect").nav__link Связаться
+                    a(href="#form").nav__link Связаться
             .footer__info
               .footer__socials-block
                 .footer__socials-txt
@@ -196,6 +196,40 @@ html(lang="en")
                   p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                 .footer__confucius--author 
                   p Martin Golding
+
+      .fullscreen-menu
+        .fullscreen-menu__left
+          .hero__logo.fullscreen-menu__logo 
+            .logo ПВ
+
+        .fullscreen-menu__right
+
+          a.fullscreen-menu__close(href="")
+
+          nav.nav
+            ul.nav__list.fullscreen-menu__list
+              li.nav__item
+                a(href="#hero").nav__link.fullscreen-menu__link Главная
+              li.nav__item
+                a(href="#about").nav__link.fullscreen-menu__link Обо мне
+              li.nav__item
+                a(href="#values").nav__link.fullscreen-menu__link Навыки
+              li.nav__item
+                a(href="#works").nav__link.fullscreen-menu__link Работы
+              li.nav__item
+                a(href="#reviews").nav__link.fullscreen-menu__link Отзывы
+              li.nav__item
+                a(href="#form").nav__link.fullscreen-menu__link Связаться
+            ul.socials.socials__fullscreen
+              li.socials__item.socials__item--fullscreen
+                a(href="https://www.instagram.com/plotnikovvlad/" target="_blank").socials__link
+                  +icon('insta', 'socials__icon')
+              li.socials__item.socials__item--fullscreen
+                a(href="https://vk.com/plotnikovvladislav" target="_blank").socials__link
+                  +icon('vk', 'socials__icon') 
+              li.socials__item.socials__item--fullscreen
+                a(href="https://github.com/PlotnikovVlad94" target="_blank").socials__link
+                  +icon('github', 'socials__icon')
 
     include ./templates/entry.pug
                    

@@ -55,7 +55,7 @@ export default {
       } catch(error) {
         this.showTooltipe({
           active: true,
-          message: error.message
+          message: 'Проверьте введенные данные'
         })
       }
     },

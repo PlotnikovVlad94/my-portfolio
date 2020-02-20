@@ -1,13 +1,10 @@
 export default function formValidate(options) {
     const inputs = options.inputs;
     const regexp = {
-        email  : '^[-._a-zA-Za-яA-я0-9]{2,}@(?:[a-zA-Za-яА-Я0-9][-a-z-A-Z-a-я-А-Я0-9]+\\.)+[a-za-я]{2,6}$',
-        phone  : '^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$'
-    };
+        email  : '^[-._a-zA-Za-яA-я0-9]{2,}@(?:[a-zA-Za-яА-Я0-9][-a-z-A-Z-a-я-А-Я0-9]+\\.)+[a-za-я]{2,6}$'};
     const isFieldCorrect = {
         name    : false,
         email   : false,
-        phone   : false,
         message : false
     };
     const errorClass = 'is-error';
@@ -16,7 +13,6 @@ export default function formValidate(options) {
     const errorLongNameMessage = 'Текст вqq поле не может быть превышать 40 символов';
     const errorLongTextMessage = 'Текст в поле не может быть превышать 1000 символов';
     const errorIncorrectEmailMessage = 'Адрес электронной почты введен некорректно';
-    const errorIncorrectPhoneMessage = 'Номер телефона введен некорректно';
 
     inputs.forEach((input) => {
         setMode(input);
@@ -68,22 +64,6 @@ export default function formValidate(options) {
             showErrorMessage(input, errorMessageEmpty);
         } else if (!(isValidEmail && regEmail.test(input.value))) {
             showErrorMessage(input, errorIncorrectEmailMessage);
-        } else {
-            removeErrorMessage(input);
-        }
-    }
-
-    /**
-     * @description Validate an input element whose name='phone'.
-     * @param input {HTMLElement} – input element.
-     */
-    function validatePhone(input) {
-        const regPhone = new RegExp(regexp.phone, 'u');
-
-        if (!input.value.length) {
-            showErrorMessage(input, errorMessageEmpty);
-        } else if (!regPhone.test(input.value)) {
-            showErrorMessage(input, errorIncorrectPhoneMessage);
         } else {
             removeErrorMessage(input);
         }
