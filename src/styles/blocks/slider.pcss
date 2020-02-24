@@ -3,6 +3,19 @@
   position: relative;
   flex-direction: column;
   max-width: 975px;
+
+  &:after {
+  position: absolute;
+  content: attr(data-slide);
+  font-size: 300px;
+  font-weight: 800;
+  line-height: 0.68;
+  color: #e6e6e6;
+  position: absolute;
+  top: 0%;
+  left: 95%;
+  z-index: -1;
+  }
 }
 
 .slider__preview {
@@ -26,7 +39,7 @@
 }
 
 .preview__item {
-  max-width: 178px;
+  width: 178px;
   height: 100px;
   transition: .2s;
   &.active,

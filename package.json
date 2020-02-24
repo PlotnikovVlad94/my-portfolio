@@ -15,10 +15,14 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
+    "@babel/polyfill": "^7.8.3",
     "acorn": "^6.0.5",
     "acorn-dynamic-import": "^4.0.0",
     "autoprefixer": "^9.4.8",
     "babel-loader": "^8.0.5",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2017": "^6.24.1",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
     "file-loader": "^3.0.1",
@@ -42,21 +46,29 @@
     "terser-webpack-plugin": "^1.2.3",
     "vue-loader": "^15.6.4",
     "vue-template-compiler": "^2.6.7",
-    "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.2.0"
   },
   "browserslist": [
     "last 2 versions"
   ],
   "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^3.6.4",
+    "inputmask": "^5.0.3",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",
+    "regenerator-runtime": "^0.13.3",
     "request": "^2.88.0",
     "signale": "^1.4.0",
+    "simple-vue-validator": "^0.16.0",
     "vue": "^2.6.7",
     "vue-flickity": "^1.2.1",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.1.5",
+    "vuex": "^3.1.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   }
 }
